@@ -17,11 +17,11 @@ const PlatformSelector = ({ selectedPlatform, onSelectPlatform }: Props) => {
   const { data } = usePlatforms();
 
   return (
-    <div style={{ width: "200px", marginBottom: "5px" }}>
+    <div>
       <MenuRoot>
         <MenuTrigger>
           <Button variant="outline" size="sm">
-            {selectedPlatform ? selectedPlatform.name : "Platform"}
+            select: {selectedPlatform ? selectedPlatform.name : "Platform"}
           </Button>
         </MenuTrigger>
         <MenuContent style={{ position: "absolute" }}>
