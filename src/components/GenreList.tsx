@@ -11,7 +11,7 @@ const GenreList = ({ selectedGenre, onSelectedGenre }: Props) => {
   const { data, isLoading, error } = useGenres();
   return (
     <List.Root variant="plain">
-      {data.map((genre) => (
+      {data?.results.map((genre) => (
         <ListItem key={genre.id} padding={3}>
           <HStack>
             <Image
