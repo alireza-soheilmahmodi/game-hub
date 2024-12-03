@@ -10,19 +10,14 @@ import { Platform } from "./hooks/useGames";
 import SortSelector from "./components/SortSelector";
 
 export interface GameQuery {
-  genre: Genre | null;
-  platform: Platform | null;
+  genreId: number | undefined;
+  platformId: number | undefined;
   sortOrder: string;
   searchText: string;
 }
 
 function App() {
-  const [gameQuery, setGameQuery] = useState<GameQuery>({
-    genre: null,
-    platform: null,
-    sortOrder: "",
-    searchText: "",
-  });
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
   return (
     <Grid
@@ -39,9 +34,9 @@ function App() {
 
       <GridItem area="aside" display={{ base: "none", lg: "block" }}>
         <GenreList
-          selectedGenre={gameQuery.genre}
+          selectedGenreId={gameQuery.genreId}
           onSelectedGenre={(genre: Genre) =>
-            setGameQuery({ ...gameQuery, genre })
+            setGameQuery({ ...gameQuery, genreId: genre.id })
           }
         />
       </GridItem>
@@ -49,9 +44,9 @@ function App() {
       <GridItem area="main">
         <Flex gap={5} marginBottom={2}>
           <PlatformSelector
-            selectedPlatform={gameQuery.platform}
+            selectedPlatformId={gameQuery.platformId}
             onSelectPlatform={(platform: Platform) =>
-              setGameQuery({ ...gameQuery, platform })
+              setGameQuery({ ...gameQuery, platformId: platform.id })
             }
           />
           <SortSelector

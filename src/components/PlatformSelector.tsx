@@ -9,19 +9,22 @@ import {
 } from "@chakra-ui/react";
 
 interface Props {
-  selectedPlatform: Platform | null;
+  selectedPlatformId?: number;
   onSelectPlatform: (platform: Platform) => void;
 }
 
-const PlatformSelector = ({ selectedPlatform, onSelectPlatform }: Props) => {
+const PlatformSelector = ({ selectedPlatformId, onSelectPlatform }: Props) => {
   const { data } = usePlatforms();
+  const platform = data?.results.find(
+    (platform) => platform.id === selectedPlatformId
+  );
 
   return (
     <div>
       <MenuRoot>
         <MenuTrigger>
           <Button variant="outline" size="sm">
-            select: {selectedPlatform ? selectedPlatform.name : "Platform"}
+            select: {selectedPlatformId ? platform?.name : "Platform"}
           </Button>
         </MenuTrigger>
         <MenuContent style={{ position: "absolute" }}>
