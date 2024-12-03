@@ -1,3 +1,4 @@
+import useGameQueryStore from "@/store";
 import {
   Button,
   MenuContent,
@@ -15,14 +16,12 @@ const sortOrderList = [
   { value: "-rating", label: "average rating" },
 ];
 
-interface Props {
-  sortOrder: string;
-  onSelectSortOrder: (sortOrder: string) => void;
-}
+const SortSelector = () => {
+  const selectedSortOrder = useGameQueryStore((s) => s.gameQuery.sortOrder);
+  const setSelectedSortOrder = useGameQueryStore((s) => s.setSortOrder);
 
-const SortSelector = ({ sortOrder, onSelectSortOrder }: Props) => {
   const currentSortOrder = sortOrderList.find(
-    (order) => order.value === sortOrder
+    (order) => order.value === selectedSortOrder
   );
 
   return (
@@ -38,7 +37,7 @@ const SortSelector = ({ sortOrder, onSelectSortOrder }: Props) => {
             <MenuItem
               key={order.value}
               value={order.value}
-              onClick={() => onSelectSortOrder(order.value)}
+              onClick={() => setSelectedSortOrder(order.value)}
             >
               {order.label}
             </MenuItem>
