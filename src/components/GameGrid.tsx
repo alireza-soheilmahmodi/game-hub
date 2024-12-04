@@ -29,9 +29,17 @@ const GameGrid = () => {
         dataLength={fetchedGamesCount || 0}
         hasMore={!!hasNextPage}
         next={() => fetchNextPage()}
-        loader={<Spinner />}
+        loader={
+          <div style={{ width: "50px", margin: "auto", marginTop: "20px" }}>
+            <Spinner />
+          </div>
+        }
       >
-        <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 5 }} gap={5}>
+        <SimpleGrid
+          columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
+          gap={5}
+          paddingTop={5}
+        >
           {isLoading &&
             skeleton.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
           {data?.pages.map((page, index) => (

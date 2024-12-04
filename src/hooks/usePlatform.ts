@@ -1,6 +1,6 @@
 import apiClient from "@/services/api-client";
 import { FetchResponse } from "../services/api-client";
-import { Platform } from "./useGames";
+import { Platform } from "../entities/Platform";
 import { useQuery } from "@tanstack/react-query";
 
 const usePlatforms = () =>

@@ -1,4 +1,4 @@
-import { Platform } from "@/hooks/useGames";
+import { Platform } from "@/entities/Platform";
 
 interface Props {
   platforms: Platform[];
